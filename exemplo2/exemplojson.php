@@ -4,7 +4,7 @@ if (file_exists("teste.json")) { //se o arquivo existir na pasta especificada
     $str = file_get_contents("teste.json");//lê o arquivo como string
 	$json = json_decode($str);//Decodifica a string Json para um objeto
 
-	print_r($json); //imprime a strutura do objeto
+	print_r($json); //imprime a estrutura do objeto
 } else {
     exit("Falha ao abrir teste.json.");
 }
