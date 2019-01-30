@@ -2,27 +2,27 @@
 require_once ('../nusoap/lib/nusoap.php');
 require_once ('../PDO/PDO.php');
 
-//criando servidor SOAP
+//Criando servidor SOAP
 $server = new soap_server; 
 
-$server->configureWSDL('demo','urn:demo');
+$server->configureWSDL('demo','urn:demo'); //Definição de namespace para o wsdl
 
-$server->register('get_names',
+$server->register('get_names', //registro das funções que estarão disponíveis no web service
+	array(), //parametro de entrada da função, ou inputs
+	array("result"=>"xsd:string") //parametros de retorno da função, ou outputs, deve-se definir o tipo do retorno
+);
+
+$server->register('get_names_and_ages',//função
 	array(), // inputs
 	array("result"=>"xsd:string") // outputs
 );
 
-$server->register('get_names_and_ages',
-	array(), // inputs
-	array("result"=>"xsd:string") // outputs
-);
-
-$server->register('get_age_by_name',
-	array("name" =>"xsd:string"), // inputs
+$server->register('get_age_by_name',//função
+	array("name" =>"xsd:string"), //inputs, deve-se definir os tipos dos parâmetros
 	array("result"=>"xsd:integer") // outputs
 );
 
-// criando uma função 
+// Criando uma função 
 function get_names(){ 
 
 	$database = new usePDO;
@@ -51,7 +51,7 @@ function get_age_by_name($name){
 	return $result->fetch()['idade']; 
 } 
 
-// create HTTP listener 
+//Criando um servidor HTTP 
 @$server->service(file_get_contents("php://input"));
 
 ?>
