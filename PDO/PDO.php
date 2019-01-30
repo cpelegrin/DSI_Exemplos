@@ -6,13 +6,20 @@ class usePDO {
 	private $username = "root";
 	private $password = "";
 	private $dbname="meubanco";
+	private $instance;
 
-	function conexao(){
+	function getInstance(){
+		if(empty($instance)){
+			$instance = $this->conexao();
+		}
+		return $instance;
+	}
+
+	private function conexao(){
 		try {
 			$conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname",$this->username,$this->password);
     // set the PDO error mode to exception
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			echo "Connected successfully<br>"; 
 			return $conn;
 		}
 		catch(PDOException $e)
@@ -23,18 +30,14 @@ class usePDO {
 	}
 
 	function insert($sql){
-		$cnx = $this->conexao();
+		$cnx = $this->getInstance();
 		print_r($cnx->query($sql));
 		
-
-
 	}
 
 	function select($sql){
-		$cnx = $this->conexao();
-
+		$cnx = $this->getInstance();
 		$result = $cnx->query($sql);
-		$cnx->close();
 
 		return $result;
 	}
