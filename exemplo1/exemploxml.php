@@ -13,4 +13,8 @@ if (file_exists('teste.xml')) { //se o arquivo existir na pasta especificada
 
 	$novoXml = fopen("xml_corrigido.xml", "w") or die("Impossível ler o arquivo");//cria novo arquivo
 	fwrite($novoXml, $xml->asXML());//salva o novo arquivo em formato xml
+
+	echo "<br>";
+	$last_line = system('time', $retval);
+	
 ?>
