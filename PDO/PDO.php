@@ -17,8 +17,8 @@ class usePDO {
 		}
 		catch(PDOException $e)
 		{
-			echo "Connection failed: " . $e->getMessage();
-			die("Connection failed: " . $cnx->connect_error);
+			echo "Connection failed: " . $e->getMessage() . "<br>";
+			die("Connection failed: " . $cnx->connect_error) . "<br>";
 		}
 	}
 
