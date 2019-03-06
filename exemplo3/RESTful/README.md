@@ -196,17 +196,17 @@ E no arquivo app/http/Controllers/ExampleControllers.php, inclua “use DB;” n
 ```php
 public function get_names()
 {
-return $results = DB::select("SELECT nome FROM pessoas");
+	return $results = DB::select("SELECT nome FROM pessoas");
 }
 
 public function get_names_and_ages()
 {
-return $results = DB::select("SELECT nome, idade FROM pessoas");
+	return $results = DB::select("SELECT nome, idade FROM pessoas");
 }
 
 public function get_age_by_name($name)
 {
-return $results = DB::select("SELECT idade FROM pessoas WHERE nome='$name'");
+	return $results = DB::select("SELECT idade FROM pessoas WHERE nome='$name'");
 }
 ```
   
