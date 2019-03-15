@@ -13,6 +13,8 @@ Abaixo será detalhado uma forma de instalação e configuração do Lumen, mas 
 
 Abra um CMD e navegar até a pasta onde o projeto será criado. No caso do projeto que estamos seguindo, navegue até *C:\xampp\htdocs\DSI_Exemplos\exemplo3*.
 
+> Se você efetuar o downlod desse código promto, execute composer update dentro da pasta do projeto para atualizar as suas bibliotecas.
+
 Execute no cmd o seguinte comando: composer global require *laravel/lumen-installer*
 
 Depois de efetuado download do Lumen, vamos criar uma aplicação. Execute o comando: *lumen new RESTful*
@@ -66,7 +68,9 @@ Abra o Painel de controle do XAMPP e inicie o MySQL e o Apache. O Apache somente
 	CACHE_DRIVER=file
 	QUEUE_CONNECTION=sync
 
-Abra outra janela do CMD e navegue até a pasta. Aquela primeira está com o servidor aberto, então aconselho você a ir na pasta do projeto, pressionar o shift + o botão direito na pasta e no menu clicar em “Abrir janela de comando aqui”.
+Essa dica vale para o Windows 7 e 8: Abra outra janela do CMD e navegue até a pasta. Aquela primeira está com o servidor aberto, então aconselho você a ir na pasta do projeto, pressionar o shift + o botão direito na pasta e no menu clicar em “Abrir janela de comando aqui”.
+
+Para o Windows 10, basta abrir novamente um CMD através do menu iniciar. 
 
 Execute o comando: *php artisan make:migration create_pessoas_table --create=pessoas*
 
