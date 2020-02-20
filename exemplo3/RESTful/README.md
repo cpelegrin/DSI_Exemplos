@@ -13,6 +13,8 @@ Abaixo será detalhado uma forma de instalação e configuração do Lumen, mas 
 
 Abra um CMD e navegar até a pasta onde o projeto será criado. No caso do projeto que estamos seguindo, navegue até *C:\xampp\htdocs\DSI_Exemplos\exemplo3*.
 
+> Se você efetuar o downlod desse código promto, execute composer update dentro da pasta do projeto para atualizar as suas bibliotecas.
+
 Execute no cmd o seguinte comando: composer global require *laravel/lumen-installer*
 
 Depois de efetuado download do Lumen, vamos criar uma aplicação. Execute o comando: *lumen new RESTful*
@@ -66,7 +68,9 @@ Abra o Painel de controle do XAMPP e inicie o MySQL e o Apache. O Apache somente
 	CACHE_DRIVER=file
 	QUEUE_CONNECTION=sync
 
-Abra outra janela do CMD e navegue até a pasta. Aquela primeira está com o servidor aberto, então aconselho você a ir na pasta do projeto, pressionar o shift + o botão direito na pasta e no menu clicar em “Abrir janela de comando aqui”.
+Essa dica vale para o Windows 7 e 8: Abra outra janela do CMD e navegue até a pasta. Aquela primeira está com o servidor aberto, então aconselho você a ir na pasta do projeto, pressionar o shift + o botão direito na pasta e no menu clicar em “Abrir janela de comando aqui”.
+
+Para o Windows 10, basta abrir novamente um CMD através do menu iniciar. 
 
 Execute o comando: *php artisan make:migration create_pessoas_table --create=pessoas*
 
@@ -217,3 +221,37 @@ Para mais informações sobre o Lumen, acesse: [https://lumen.laravel.com/docs/5
 # Bibliografia
 
 COMPOSER. Getting Started. Disponível em: [https://getcomposer.org/doc/00-intro.md](https://getcomposer.org/doc/00-intro.md). Acesso em 06/03/2019.
+
+
+# Problemas que ocorreram em aula
+
+
+# Erro do Migrate Lumen
+
+  
+
+Durante a aula pudemos presenciar esse erro ao criar e executar outro migrate com o Lumen: *Cannot declare class CreatePessoasTable, because the name is already in use*
+
+Esse erro ocorre porque temos dois arquivos de migrate identicos que utilizam a mesma função para criar a tabela. Basta remover o arquivo anterior e executar o comando: *php artisan migrate.*
+
+Para replicar esse erro, encontrei outro problema: *SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'pessoas' already exists.* Tive que executar o comando *php artisan migrate:rollback* antes de excluir o arquivo anterior, para voltar a tabela ao estado inicial. Caso necessite utilize esse comando também.
+
+  
+
+# Método PUT incorreto no Firebase
+
+Também durante a aula, ocorreu um problema ao atualizar um registro no Firebase. Criei um request PUT passando um json no corpo da requisição e um ID na URL. em vez de atualizar o registro, o Firebase criou outro registro aninhado ao primeiro.
+
+Isso ocorreu porque criei um Json de forma incorreta no corpo da mensagem. A estrutura estava assim:
+
+  
+
+![](https://lh3.googleusercontent.com/7mEywIFLVP7BB5n4396kVif7ypYcaacr788ghpAE5jI_rYQDQGMhVFNQDTpk7F_abHF0M_bA3dVWxN1uTtzP50dYFoCXFquNIZHVj7r74oo6ekp-XsuggLqe4LgbXbMftzif22L7)
+
+  
+
+Quando o correto seria assim:
+
+![](https://lh4.googleusercontent.com/J0kccO8c1RKxeSVsc2afXNf5_OsTbcPOvVx9duUC_CuFC6ifBHW-X47Py43vPl7-1KjYddpe3sRXhC1TZtMYJm1gcaGpriIktE2SSTGG-LXKF-5QDaMAf2YJAXSqb0ghJ-rmfGMK)
+
+Percebam a diferença no corpo da mensagem. Criei incorretamente o Json, já que estou dentro do recurso do Firebase através da URL, por isso ficou incorreto na aula.
