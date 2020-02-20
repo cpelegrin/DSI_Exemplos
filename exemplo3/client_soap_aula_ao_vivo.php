@@ -1,7 +1,7 @@
 <?php
 require_once ('../nusoap/lib/nusoap.php');
 //Endereço do WSDL
-$wsdl = "http://localhost/DSI_Exemplos/exemplo3/ws_soap.php?wsdl";
+$wsdl = "http://www.dneonline.com/calculator.asmx?WSDL";
 
 //Criando cliente Soap
 $client = new nusoap_client($wsdl, 'wsdl');
@@ -22,11 +22,11 @@ echo "<br>";
 /**********/
 
 //chamada dos métodos do ws_soap.php
-$result1=$client->call('get_names', array());
-print_r($result1."<br>");
+// $result1=$client->call('get_names', array());
+// print_r($result1."<br>");
 
-$result2=$client->call('get_names_and_ages', array());
-print_r($result2."<br>");
+// $result2=$client->call('get_names_and_ages', array());
+// print_r($result2."<br>");
 
 
 echo "<br>";
