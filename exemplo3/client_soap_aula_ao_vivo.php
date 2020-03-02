@@ -1,7 +1,8 @@
 <?php
 require_once ('../nusoap/lib/nusoap.php');
 //Endereço do WSDL
-$wsdl = "http://www.dneonline.com/calculator.asmx?WSDL";
+//$wsdl = "http://www.dneonline.com/calculator.asmx?WSDL";
+$wsdl = "http://localhost/DSI_Exemplos/exemplo3/ws_soap.php?wsdl";
 
 //Criando cliente Soap
 $client = new nusoap_client($wsdl, 'wsdl');
@@ -22,18 +23,22 @@ echo "<br>";
 /**********/
 
 //chamada dos métodos do ws_soap.php
-// $result1=$client->call('get_names', array());
-// print_r($result1."<br>");
+$result1=$client->call('get_names', array());
+print_r($result1."<br>");
 
-// $result2=$client->call('get_names_and_ages', array());
-// print_r($result2."<br>");
+$result2=$client->call('get_names_and_ages', array());
+print_r($result2."<br>");
 
+$params = array('name' => 'maria');
 
-echo "<br>";
-echo "<br>";
+$result3=$client->call('get_age_by_name', $params);
+print_r($result3."<br>");
 
-$params = array('intA'=>1, 'intB'=>2);
+// echo "<br>";
+// echo "<br>";
 
-$result3=$client->call('Add', $params, 'http://testuri.com', 'http://tempuri.org/Add');
-print_r($result3);
+// $params = array('intA'=>1, 'intB'=>2);
+
+// $result4=$client->call('Add', $params, 'http://testuri.com', 'http://tempuri.org/Add');
+// print_r($result4);
 ?>
