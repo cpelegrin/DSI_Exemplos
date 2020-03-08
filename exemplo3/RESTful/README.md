@@ -13,7 +13,7 @@ Abaixo será detalhado uma forma de instalação e configuração do Lumen, mas 
 
 Abra um CMD e navegar até a pasta onde o projeto será criado. No caso do projeto que estamos seguindo, navegue até *C:\xampp\htdocs\DSI_Exemplos\exemplo3*.
 
-> Se você efetuar o downlod desse código promto, execute composer update dentro da pasta do projeto para atualizar as suas bibliotecas.
+> Se você efetuar o downlod desse código pronto, execute composer update dentro da pasta do projeto para atualizar as suas bibliotecas.
 
 Execute no cmd o seguinte comando: composer global require *laravel/lumen-installer*
 
@@ -193,7 +193,7 @@ $router->get('get_names', 'ExampleController@get_names');
 
 $router->get('get_names_and_ages', 'ExampleController@get_names_and_ages');
 
-$router->get('get_age_by_name', 'ExampleController@get_age_by_name');
+$router->get('get_age_by_name/{name}', 'ExampleController@get_age_by_name');
 ```
 
 E no arquivo app/http/Controllers/ExampleControllers.php, inclua “use DB;” na linha 6 e as seguintes linhas de código ao final do arquivo:
