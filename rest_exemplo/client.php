@@ -11,6 +11,8 @@ curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 
 curl_setopt($curl, CURLOPT_URL, $url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+/*true para retornar a transferência como uma string 
+do valor de retorno de curl_exec() em vez de enviá-la diretamente.*/
 
 $result = curl_exec($curl);
 
